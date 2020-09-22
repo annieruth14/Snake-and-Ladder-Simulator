@@ -6,46 +6,79 @@ public class Snake_and_Ladder{
 
 	public static void main(String[] args){
 		//variables
-		int position = 0;
-		int count = 0;
-		
+		int position1 = 0;
+		int position2 = 0;
+		int count = 0;		
 		// Computation
-		while (position!=100){
-			count++;
-			int number = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+		while (!(position1==100 || position2==100)){
 			
-			int option = (int) (Math.floor(Math.random() * 10 )) % 3;
-			switch (option) {
+			int number1 = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+			
+			int option1 = (int) (Math.floor(Math.random() * 10 )) % 3;
+			switch (option1) {
 				case NO_PLAY:
-					position = position;
+					position1 = position1;
 					
 					break;
 				case LADDER:
-					position = position + number;
-					
-					if(position>100){
-						position = position - number;
+					while(option1==LADDER){
+						position1 = position1 + number1; 
+						option1 = (int) (Math.floor(Math.random() *10)) %3;
+						number1 = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+						
+						if(position1>100){
+							position1 = position1 - number1;
+						}
+											
 					}
 					break;
 				case SNAKE:
-					position = position - number;
+					position1 = position1 - number1;
 					
-					if(position < 0){
-						position = 0;
+					if(position1 < 0){
+						position1 = 0;
 					}
 					break;
 			}
-			System.out.println("Dice roll: "+count+" Position: "+position);
+			count++;
+			
+			int number2 = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+			
+			int option2 = (int) (Math.floor(Math.random() * 10 )) % 3;
+			switch (option2) {
+				case NO_PLAY:
+					position2 = position2;
+					
+					break;
+				case LADDER:
+					while(option2==LADDER){
+						position2 = position2 + number2;
+						option2 = (int) (Math.floor(Math.random() *10)) %3;
+						number2 = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+						
+						if(position2>100){
+							position2 = position2 - number2;
+						} 					
+					}
+					break;
+				case SNAKE:
+					position2 = position2 - number2;
+					
+					if(position2 < 0){
+						position2 = 0;
+					}
+					break;
+			}
+			count++;
+			
 		}
 		System.out.println("The total number of times the dice was rolled: "+count);
+		if(position1 == 100)
+			System.out.println("Player 1 won");
+		else if (position2 == 100)
+			System.out.println("Player 2 won"); 
 	}
 }
-
-
-
-
-
-
 
 
 
