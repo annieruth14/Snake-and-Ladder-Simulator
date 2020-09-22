@@ -21,6 +21,9 @@ public class Snake_and_Ladder{
 				case LADDER:
 					position = position + number;
 					System.out.println("Case: Ladder");
+					if(position>100){
+						position = position - number;
+					}
 					break;
 				case SNAKE:
 					position = position - number;
